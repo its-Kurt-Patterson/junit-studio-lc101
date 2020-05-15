@@ -23,11 +23,16 @@ public class BalancedBrackets {
      */
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
+        char placeHolder = 't';
         for (char ch : str.toCharArray()) {
             if (ch == '[') {
                 brackets++;
+                if (placeHolder == ']') {
+                    return false;
+                }
             } else if (ch == ']') {
                 brackets--;
+                placeHolder = ']';
             }
         }
         return brackets == 0;
